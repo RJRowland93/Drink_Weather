@@ -59,3 +59,23 @@ $("#submitButton")/*?*/.on("click", function() {
 // Decide which drink is appropriate for current weather.
 // Query cocktail API for that drink.
 // Display relevant cocktail info
+
+
+//ajax call for coktaildb
+$.ajax({
+	url: 'http://www.thecocktaildb.com/api/json/v1/1/',
+	method: 'GET',
+	
+})
+.done(function() {
+	console.log("success");
+});
+
+
+
+
+
+
+
+
+
