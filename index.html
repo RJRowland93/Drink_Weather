@@ -21,15 +21,24 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 </head>
 <body>
-	<div class="wrapper">
+    <nav role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Typsy Weather</a>
+      </div>
+    </nav>
+	<div class="container">
 <!-- header and info -->
-		<div id="headerInfo">
-			
-		</div>
+	<header id="headerInfo">
+		
+	</header>
 <!-- search bar -->
-		<div id="searchBar">
-			
-		</div>
+	  <form id="searchBar">
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Enter a City" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
 <!-- submit button -->
 		<div id="submit">
 			
@@ -42,13 +51,17 @@
 		<div id="drinkChoice">
 			
 		</div>
-<!-- sticky footer -->
-		<div class="push"></div>
 	</div>
 <!-- footer -->
-	<div class="footer">
-		<p>Created by: <a href="https://www.github.com/epanderson92" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</p> 
-	</div>
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<h5 class="white-text">Created by: <a href="https://www.github.com/epanderson92" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</h5> 
+				</div>
+			</div>
+		</div>
+	</footer>
 <link rel="stylesheet" href="assets/javascript/main.js">
 </body>
 </html>
