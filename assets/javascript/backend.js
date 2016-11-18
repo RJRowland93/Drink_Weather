@@ -17,17 +17,17 @@ $("#searchBar").on("submit", function() {
 	console.log("type of user input: " + typeof userInput);
 	//boolean variable to determine whether to query with city param or zip param
 	var isCity;
-
+	//parse user input to determine if it's a number or not
 	var parsedInput = parseInt(userInput);
 	console.log(isNaN(parsedInput));
-
+	//if its not a number, it must be a string aka a city
 	if (isNaN(parsedInput)) {
 		isCity = true;
 	} else {
 		isCity = false;
 	}
 	console.log("isCity: " + isCity);
-
+	//if its a city, add userinput to city parameter and add city param to query url
 	if (isCity) {
 		cityParam += userInput;
 		weatherQuery += cityParam;
@@ -37,7 +37,7 @@ $("#searchBar").on("submit", function() {
 	}
 
 	console.log("weather query: " + weatherQuery);
-
+	//Call weather API and store weather condition and temperature in F for queried location to global variables
 	$.ajax({
 		url: weatherQuery,
 		method: "GET"
@@ -48,7 +48,7 @@ $("#searchBar").on("submit", function() {
 		console.log(weather);
 		console.log(temperatureF);
 	})
-
+	//clear input field
 	$("#search").val("")
 	//prevent refresh
 	return false;
