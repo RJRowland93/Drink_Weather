@@ -52,6 +52,18 @@ $("#searchBar").on("submit", function() {
 		console.log(weather);
 		console.log(temperatureF);
 	})
+
+
+
+
+
+	
+
+
+
+
+
+
 	//clear input field
 	$("#search").val("")
 	//prevent refresh
@@ -69,13 +81,18 @@ $("#searchBar").on("submit", function() {
 // oboject for drinks
 
 var drinks = {
+
+	//summer array with object list inside 
  
 	"summer": 	[{ "name": "110 in the Shade", "id": "15423" }, {"name": "151 Florida Bushwacker" , "id": "14588",}, {"name": "Ultimate Margarita" , "id": "14622",}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "A Gilligan's Island", "id": "16943" }],
 
+	//fall array
 	"fall": 	[{"name": "Arctic Fish": , "id": "14622",} ,{"name": "Apricot punch" , "id": "15849" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "Archbishop" , "id": "11052" ,}, {"name": "Bluebird" , "id": "11120" }],
 
+	//spring array
 	"spring": 	[{"name": "Loch Lomond" , "id": "11658" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "English Rose Cocktail" , "id": "11339" ,}, {"name": "Gin Daisy" , "id": "11408",}, {"name": "Grass Skirt" , "id": "11433"}],
 
+	//winter array 
 	"winter": 	[ {"name": "Black Russian" , "id": "11102" ,}, {"name": "Cosmopolitan Martini" , "id": "14133" ,}, {"name": "Affinity" , "id": "11009" ,}, {"name": "Balmoral" , "id": "11060" ,}, {"name": "Cafe Savoy" , "id": "14181" ,}]
 
 
