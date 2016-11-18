@@ -11,21 +11,50 @@ var unitsParam = "&units=imperial";
 var weatherQuery = "api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
 
 //Append appropriate parameters depending on user input
-if (/*input is city*/) {
-	cityParam += /*input*/;
-	weatherQuery += cityParam;
-} else if (/*input is zip*/) {
-	zipcodeParam += /*input*/;
-	weatherQuery += zipcodeParam;
-}
+//input id is search
+//submit button
 
-$.ajax({
-	url: weatherQuery,
-	method: "GET"
-}).done(function(response) {
-	//do stuff
-	console.log(response);
+$("#submitButton")/*?*/.on("click", function() {
+
+	var userInput = $("#search").val().trim();
+	console.log(userInput);
+	//boolean variable to determine whether to query with city param or zip param
+	var isCity;
+
+	var parsedInput = parseInt(userInput);
+	console.log(parsedInput);
+	if (parsedInput === NaN) {
+		isCity = true;
+	} else {
+		isCity = false;
+	}
+
+	if (isCity) {
+		cityParam += userInput;
+		weatherQuery += cityParam;
+	} else {
+		zipcodeParam += userInput;
+		weatherQuery += zipcodeParam;
+	}
+
+	console.log(weatherQuery);
+
+	$.ajax({
+		url: weatherQuery,
+		method: "GET"
+	}).done(function(response) {
+		console.log(response);
+		weather = response.weather.main;
+		temperatureF = response.main.temp;
+	})
+
+	console.log(weather);
+	console.log(temperatureF);
+
 })
+
+
+
 
 // Decide which drink is appropriate for current weather.
 // Query cocktail API for that drink.
