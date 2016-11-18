@@ -12,43 +12,91 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <!-- Main CSs -->
   <link rel="stylesheet" href="assets/css/main.css">
-  <!-- jQuery CDN -->
+  
+</head>
+<body>
+    <nav role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">Typsy Weather</a>
+      </div>
+    </nav>
+	<div class="container">
+<!-- header and info -->
+	<header id="headerInfo">
+
+	</header>
+
+<div class="container">
+	<!-- Drink Carousel -->
+<div class="row">
+	<div class="col s12 m8 offset-m2">
+	  	<div class="carousel">
+	    <a class="carousel-item" href="#one!"><img src="assets/images/cold.jpg"></a>
+	    <a class="carousel-item" href="#two!"><img src="assets/images/fall.jpg"></a>
+	    <a class="carousel-item" href="#three!"><img src="assets/images/hot.jpg"></a>
+	    <a class="carousel-item" href="#four!"><img src="assets/images/rainy.jpg"></a>
+	    <a class="carousel-item" href="#five!"><img src="assets/images/sunny.jpg"></a>
+	  </div>
+	</div>
+</div>
+      <!-- drink choice -->
+	<div id="drinkChoice">
+		<div class="row">
+	        <div class="col s12 m7">
+	          <div class="card">
+	            <div class="card-image">
+	              <img src="assets/images/cold.jpg">
+	              <span class="card-title" id="drinkTitle">Drink Title</span>
+	            </div>
+	            <div class="card-content">
+	              <p id="drinkIngredients">Voda Rum Juice</p>
+	              <br>
+	              <p id="drinkDirections">Pour over ice.</p>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+		</div>
+	</div>
+	<!-- search bar -->
+	  <form id="searchBar">
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Enter a City" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+<!-- weather forecast  -->
+		<div id="weatherForecast">
+			
+		</div>
+</div>
+
+<!-- footer -->
+
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<h5 class="white-text">Created by: <a href="https://www.github.com/epanderson92" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</h5> 
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- jQuery CDN -->
   <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-</head>
-<body>
-	<div class="wrapper">
-<!-- header and info -->
-		<div>
-			
-		</div>
-<!-- search bar -->
-		<div>
-			
-		</div>
-<!-- submit button -->
-		<div>
-			
-		</div>
-<!-- weather forecast  -->
-		<div>
-			
-		</div>
-<!-- drink choice -->
-		<div>
-			
-		</div>
-<!-- sticky footer -->
-		<div class="push"></div>
-	</div>
-<!-- footer -->
-	<div class="footer">
-		<p>Created by: <a href="https://www.github.com/epanderson92" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</p> 
-	</div>
-<link rel="stylesheet" href="assets/javascript/main.js">
+  <script src="assets/javascript/main.js"></script>
+  <script src="assets/javascript/backend.js"></script>
+  <script>
+  	  $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+  </script>
+
 </body>
 </html>
