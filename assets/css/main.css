@@ -10,3 +10,7 @@
     flex: 1 0 auto;
   }
   /*=====================================*/
+  .carousel {
+  	height: 200px !important;
+  	perspective: 200px !important;
+  }
