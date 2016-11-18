@@ -4,18 +4,18 @@ var temperatureF; //temperature in fahrenheit, will hold temp of queried city/zi
 
 //Weather API call parameters
 var weatherAPIKey = "APPID=4888c0dfdc6bd6c82a0adf3d3cef0ba3";
-var city = "&q=";
-var zipcode = "&zip=";
+var cityParam = "&q=";
+var zipcodeParam = "&zip=";
 //Query URL
 var weatherQuery = "api.openweathermap.org/data/2.5/weather?"+weatherAPIKey;
 
 //Append appropriate parameters depending on user input
 if (/*input is city*/) {
-	city += /*input*/;
-	weatherQuery += city;
+	cityParam += /*input*/;
+	weatherQuery += cityParam;
 } else if (/*input is zip*/) {
-	zipcode += /*input*/;
-	weatherQuery += zipcode;
+	zipcodeParam += /*input*/;
+	weatherQuery += zipcodeParam;
 }
 
 $.ajax({
