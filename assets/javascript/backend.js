@@ -6,8 +6,9 @@ var temperatureF; //temperature in fahrenheit, will hold temp of queried city/zi
 var weatherAPIKey = "APPID=4888c0dfdc6bd6c82a0adf3d3cef0ba3";
 var cityParam = "&q=";
 var zipcodeParam = "&zip=";
+var unitsParam = "&units=imperial";
 //Query URL
-var weatherQuery = "api.openweathermap.org/data/2.5/weather?"+weatherAPIKey;
+var weatherQuery = "api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
 
 //Append appropriate parameters depending on user input
 if (/*input is city*/) {
