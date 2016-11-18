@@ -2,32 +2,31 @@
 var weather = ""; //weather condition of queried city/zip
 var temperatureF; //temperature in fahrenheit, will hold temp of queried city/zip
 
-//Weather API call parameters
-var weatherAPIKey = "APPID=4888c0dfdc6bd6c82a0adf3d3cef0ba3";
-var cityParam = "&q=";
-var zipcodeParam = "&zip=";
-var unitsParam = "&units=imperial";
-//Query URL
-var weatherQuery = "api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
+$("#searchBar").on("submit", function() {
 
-//Append appropriate parameters depending on user input
-//input id is search
-//submit button
-
-$("#submitButton")/*?*/.on("click", function() {
+	//Weather API call parameters
+	var weatherAPIKey = "APPID=4888c0dfdc6bd6c82a0adf3d3cef0ba3";
+	var cityParam = "&q=";
+	var zipcodeParam = "&zip=";
+	var unitsParam = "&units=imperial";
+	//Query URL
+	var weatherQuery = "http://api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
 
 	var userInput = $("#search").val().trim();
 	console.log(userInput);
+	console.log("type of user input: " + typeof userInput);
 	//boolean variable to determine whether to query with city param or zip param
 	var isCity;
 
 	var parsedInput = parseInt(userInput);
-	console.log(parsedInput);
-	if (parsedInput === NaN) {
+	console.log(isNaN(parsedInput));
+
+	if (isNaN(parsedInput)) {
 		isCity = true;
 	} else {
 		isCity = false;
 	}
+	console.log("isCity: " + isCity);
 
 	if (isCity) {
 		cityParam += userInput;
@@ -37,20 +36,22 @@ $("#submitButton")/*?*/.on("click", function() {
 		weatherQuery += zipcodeParam;
 	}
 
-	console.log(weatherQuery);
+	console.log("weather query: " + weatherQuery);
 
 	$.ajax({
 		url: weatherQuery,
 		method: "GET"
 	}).done(function(response) {
 		console.log(response);
-		weather = response.weather.main;
+		weather = response.weather[0].main;
 		temperatureF = response.main.temp;
+		console.log(weather);
+		console.log(temperatureF);
 	})
 
-	console.log(weather);
-	console.log(temperatureF);
-
+	$("#search").val("")
+	//prevent refresh
+	return false;
 })
 
 
