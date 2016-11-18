@@ -19,3 +19,34 @@ $.ajax({
 	//do stuff
 	console.log(response);
 })
+
+
+
+
+
+
+
+//ajax call for coktaildb
+$.ajax({
+	url: 'http://www.thecocktaildb.com/api/json/v1/1/',
+	method: 'GET',
+	
+})
+.done(function() {
+	console.log("success");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
