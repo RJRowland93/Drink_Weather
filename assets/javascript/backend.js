@@ -44,6 +44,8 @@ function chooseDrink() {
 
 }
 
+
+
 $("#submitButton").on("click", function() {
 
 
@@ -113,14 +115,32 @@ $("#submitButton").on("click", function() {
 			$("#drinkTitle").html(drink.strDrink);
 			$(".card-content").html("");
 			//build list of ingredients to be appended to card-content
-			var newUl = $("<ul>")
-			newUl.attr("id", "ingredientsList");
+			var newUl = $("<ul>");
+			
+			var d = 1;
+			var ingredients = "strIngredient" + d;
+			var measure = "strMeasure" + d;
+			
+			console.log(drink[ingredients]);
+			$(".card-content").append(newUl);
+
 			//POPULATING LOOP LIST GOES HERE
+			while(d < 15){
 
-			do {
+		 	 	newUl.attr("id", "ingredientsList").append("<li>" + drink[measure] + " " + drink[ingredients]);
+		 		d++; 
+		 		ingredients = "strIngredient" + d;
+		 		measure = "strMeasure" + d;
 
-  			}while (var d = 0; drink.strIngredient[d] != ''; d ++);
-		});
+
+		 		 console.log(d);
+		 		 console.log(drink[ingredients]);
+			}
+
+
+		 
+
+		  });
 
 	})
 
@@ -138,7 +158,3 @@ $("#submitButton").on("click", function() {
 
 
 		  
-  do {
-
-  }while (var d = 0; drink.strIngredient[j] != ''; i ++);
-  
