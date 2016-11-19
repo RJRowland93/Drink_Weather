@@ -116,6 +116,10 @@ $("#submitButton").on("click", function() {
 			var newUl = $("<ul>")
 			newUl.attr("id", "ingredientsList");
 			//POPULATING LOOP LIST GOES HERE
+
+			do {
+
+  			}while (var d = 0; drink.strIngredient[d] != ''; d ++);
 		});
 
 	})
@@ -129,3 +133,12 @@ $("#submitButton").on("click", function() {
 })
 
 
+
+
+
+
+		  
+  do {
+
+  }while (var d = 0; drink.strIngredient[j] != ''; i ++);
+  
