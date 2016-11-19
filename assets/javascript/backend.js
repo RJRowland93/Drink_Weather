@@ -2,6 +2,28 @@
 var weather = ""; //weather condition of queried city/zip
 var temperatureF; //temperature in fahrenheit, will hold temp of queried city/zip
 
+// globaloboject for drinks
+//80+ = summer, 70-79 = fall, 60-69 = spring, 0-59 = winter
+var drinks = {
+
+	//summer array with object list inside 
+ 
+	"summer": 	[{ "name": "110 in the Shade", "id": "15423" }, {"name": "151 Florida Bushwacker" , "id": "14588",}, {"name": "Ultimate Margarita" , "id": "14622",}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "A Gilligan's Island", "id": "16943" }],
+
+
+	"fall": 	[{"name": "Arctic Fish" , "id": "14622",} ,{"name": "Apricot punch" , "id": "15849" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "Archbishop" , "id": "11052" ,}, {"name": "Bluebird" , "id": "11120" }],
+
+	//spring array
+	"spring": 	[{"name": "Loch Lomond" , "id": "11658" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "English Rose Cocktail" , "id": "11339" ,}, {"name": "Gin Daisy" , "id": "11408",}, {"name": "Grass Skirt" , "id": "11433"}],
+
+	//winter array 
+	"winter": 	[ {"name": "Black Russian" , "id": "11102" ,}, {"name": "Cosmopolitan Martini" , "id": "14133" ,}, {"name": "Affinity" , "id": "11009" ,}, {"name": "Balmoral" , "id": "11060" ,}, {"name": "Cafe Savoy" , "id": "14181" ,}]
+
+
+
+
+}
+
 $("#searchBar").on("submit", function() {
 
 	//Weather API call parameters
@@ -56,9 +78,29 @@ $("#searchBar").on("submit", function() {
 
 
 
-
+	//ajax call for coktaildb
+	$.ajax({
+	url: 'http://www.thecocktaildb.com/api/json/v1/1/',
+	method: 'GET',
 	
+	})
+	.done(function() {
+		console.log("success");
+	});
 
+	//conditional to see which drink array we will use
+	if(80 <= temperatureF){
+		var tipsyarray = drinks.summer;
+		
+	}else if (70 <= temperatureF < 80){
+		var tipsyarray = drinks.fall;
+
+	}else if(60 <= temperatureF <70){
+		var tipsyarray = drinks.spring;
+
+	}else{
+		var tipsyarray = drinks.winter;
+	};
 
 
 
@@ -78,40 +120,9 @@ $("#searchBar").on("submit", function() {
 //still need to add the if statments to select drink array acording to weather and also a random number for index of the array 
 
 
-// oboject for drinks
-//80+ = summer, 70-79 = fall, 60-69 = spring, 0-59 = winter
-var drinks = {
-
-	//summer array with object list inside 
- 
-	"summer": 	[{ "name": "110 in the Shade", "id": "15423" }, {"name": "151 Florida Bushwacker" , "id": "14588",}, {"name": "Ultimate Margarita" , "id": "14622",}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "A Gilligan's Island", "id": "16943" }],
-
-
-	"fall": 	[{"name": "Arctic Fish" , "id": "14622",} ,{"name": "Apricot punch" , "id": "15849" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "Archbishop" , "id": "11052" ,}, {"name": "Bluebird" , "id": "11120" }],
-
-	//spring array
-	"spring": 	[{"name": "Loch Lomond" , "id": "11658" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "English Rose Cocktail" , "id": "11339" ,}, {"name": "Gin Daisy" , "id": "11408",}, {"name": "Grass Skirt" , "id": "11433"}],
-
-	//winter array 
-	"winter": 	[ {"name": "Black Russian" , "id": "11102" ,}, {"name": "Cosmopolitan Martini" , "id": "14133" ,}, {"name": "Affinity" , "id": "11009" ,}, {"name": "Balmoral" , "id": "11060" ,}, {"name": "Cafe Savoy" , "id": "14181" ,}]
 
 
 
-
-}
-
-
-
-
-//ajax call for coktaildb
-$.ajax({
-	url: 'http://www.thecocktaildb.com/api/json/v1/1/',
-	method: 'GET',
-	
-})
-.done(function() {
-	console.log("success");
-});
 
 
 
