@@ -1,8 +1,26 @@
 //Global Variables
 var weather = ""; //weather condition of queried city/zip
 var temperatureF; //temperature in fahrenheit, will hold temp of queried city/zip
+var chosenDrink; //will hold object that contains the ID used to query cocktailDB
 
-$("#searchBar").on("submit", function() {
+//pick random drink out of temperature appropriate array
+function chooseDrink() {
+	if (temperatureF >= 80) {
+			chosenDrink = drinks.summer[Math.floor(Math.random() * drinks.summer.length)];
+			console.log("summer drink: " + chosenDrink.name + chosenDrink.id);
+		} else if (temperatureF >= 70 && temperatureF < 79) {
+			chosenDrink = drinks.fall[Math.floor(Math.random() * drinks.fall.length)];
+			console.log("fall drink: " + chosenDrink.name + chosenDrink.id);
+		} else if (temperatureF >= 60 && temperatureF < 69) {
+			chosenDrink = drinks.spring[Math.floor(Math.random() * drinks.spring.length)];
+			console.log("spring drink: " + chosenDrink.name + chosenDrink.id);
+		} else if (temperatureF <= 59) {
+			chosenDrink = drinks.winter[Math.floor(Math.random() * drinks.winter.length)];
+			console.log("winter drink: " + chosenDrink.name + chosenDrink.id);
+		}
+}
+
+$("#submitButton").on("click", function() {
 
 	//Weather API call parameters
 	var weatherAPIKey = "APPID=4888c0dfdc6bd6c82a0adf3d3cef0ba3";
@@ -12,7 +30,7 @@ $("#searchBar").on("submit", function() {
 	//Query URL
 	var weatherQuery = "http://api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
 
-	var userInput = $("#search").val().trim();
+	var userInput = $("#city").val().trim();
 	console.log(userInput);
 	console.log("type of user input: " + typeof userInput);
 	//boolean variable to determine whether to query with city param or zip param
@@ -48,14 +66,15 @@ $("#searchBar").on("submit", function() {
 	}).done(function(response) {
 		console.log(response);
 		weather = response.weather[0].main;
-		temperatureF = response.main.temp;
+		temperatureF = Math.floor(response.main.temp);
 		console.log(weather);
 		console.log(temperatureF);
+
+		chooseDrink();
+
 	})
-
-
-
-
+	
+	
 
 	
 
@@ -65,7 +84,7 @@ $("#searchBar").on("submit", function() {
 
 
 	//clear input field
-	$("#search").val("")
+	$("#city").val("")
 	//prevent refresh
 	return false;
 
