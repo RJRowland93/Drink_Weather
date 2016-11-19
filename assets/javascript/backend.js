@@ -96,23 +96,29 @@ $("#submitButton").on("click", function() {
 		console.log(temperatureF);
 
 		chooseDrink();
+
+		/*ajax call for cocktail db, put inside weather ajax call response to make sure it doesn't run
+		until weather call is done*/
+		$.ajax({
+		url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
+		method: 'GET'
+		
+		})
+		.done(function(drinkResponse) {
+			console.log("success");
+			console.log(drinkResponse.drinks[0]);
+			var drink = drinkResponse.drinks[0];
+
+			$(".card-image img").attr("src", drink.strDrinkThumb);
+			$("#drinkTitle").html(drink.strDrink);
+			$(".card-content").html("");
+			//build list of ingredients to be appended to card-content
+			var newUl = $("<ul>")
+			newUl.attr("id", "ingredientsList");
+			//POPULATING LOOP LIST GOES HERE
+		});
+
 	})
-	
-	
-
-	//ajax call for coktaildb
-	$.ajax({
-	url: 'http://www.thecocktaildb.com/api/json/v1/1/',
-	method: 'GET',
-
-	
-	})
-	.done(function() {
-		console.log("success");
-	});
-
-
-
 
 
 	//clear input field
