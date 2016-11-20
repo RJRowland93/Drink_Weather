@@ -117,7 +117,7 @@ $("#submitButton").on("click", function() {
 			$("#drinkTitle").html(drink.strDrink);
 			$(".card-content").html("");
 			//build list of ingredients to be appended to card-content
-			var newUl = $("<ul>");
+			var newUl = $("<tr>");
 			
 			var d = 1;
 			var ingredients = "strIngredient" + d;
@@ -134,7 +134,7 @@ $("#submitButton").on("click", function() {
 
 				while(drink[ingredients] != ''){
 
-			 	 	newUl.attr("id", "ingredientsList").append("<li>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>" + drink[measure] + " " + drink[ingredients]);
+			 	 	newUl.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>" + drink[measure] + " " + drink[ingredients]);
 			 		d++;
 			 		ingredients = "strIngredient" + d;
 			 		measure = "strMeasure" + d;
