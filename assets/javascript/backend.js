@@ -13,10 +13,10 @@ var drinks = {
 	"summer": 	[{ "name": "110 in the Shade", "id": "15423" }, {"name": "151 Florida Bushwacker" , "id": "14588",}, {"name": "Ultimate Margarita" , "id": "14622",}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "A Gilligan's Island", "id": "16943" }],
 
 
-	"fall": 	[{"name": "Arctic Fish" , "id": "14622",} ,{"name": "Apricot punch" , "id": "15849" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "Archbishop" , "id": "11052" ,}, {"name": "Bluebird" , "id": "11120" }],
+	"fall": 	[{"name": "Arctic Fish" , "id": "14622",} ,{"name": "Apricot punch" , "id": "15849" ,}, {"name": "Old Fashioned", "id": "17179" ,}, {"name": "Archbishop" , "id": "11052" ,}, {"name": "Manhattan" , "id": "113839" }],
 
 	//spring array
-	"spring": 	[{"name": "Loch Lomond" , "id": "11658" ,}, {"name": "Bloody Mary", "id": "11113" ,}, {"name": "English Rose Cocktail" , "id": "11339" ,}, {"name": "Gin Daisy" , "id": "11408",}, {"name": "Grass Skirt" , "id": "11433"}],
+	"spring": 	[{"name": "Loch Lomond" , "id": "11658" ,}, {"name": "Mint Julep #1", "id": "11780" ,}, {"name": "English Rose Cocktail" , "id": "11339" ,}, {"name": "Gin Daisy" , "id": "11408",}, {"name": "Grass Skirt" , "id": "11433"}],
 
 	//winter array 
 	"winter": 	[ {"name": "Black Russian" , "id": "11102" ,}, {"name": "Cosmopolitan Martini" , "id": "14133" ,}, {"name": "Affinity" , "id": "11009" ,}, {"name": "Balmoral" , "id": "11060" ,}, {"name": "Cafe Savoy" , "id": "14181" ,}]
@@ -43,6 +43,8 @@ function chooseDrink() {
 	console.log("chosen drink: " + chosenDrink.name + chosenDrink.id);
 
 }
+
+
 
 
 
@@ -125,20 +127,29 @@ $("#submitButton").on("click", function() {
 			$(".card-content").append(newUl);
 
 			//POPULATING LOOP LIST GOES HERE
-			while(d < 15){
 
-		 	 	newUl.attr("id", "ingredientsList").append("<li>" + drink[measure] + " " + drink[ingredients]);
-		 		d++; 
-		 		ingredients = "strIngredient" + d;
-		 		measure = "strMeasure" + d;
+			instructions();
+
+			function instructions(){
+
+				while(drink[ingredients] != ''){
+
+			 	 	newUl.attr("id", "ingredientsList").append("<li>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>" + drink[measure] + " " + drink[ingredients]);
+			 		d++;
+			 		ingredients = "strIngredient" + d;
+			 		measure = "strMeasure" + d;
 
 
-		 		 console.log(d);
-		 		 console.log(drink[ingredients]);
-			}
+			 		 console.log(d);
+			 		 console.log(drink[ingredients]);
+				}
+
+				if(d === 15){
+						$(".card-content").append("<p>" + drink.strInstructions);
+				}
 
 
-		 
+			};
 
 		  });
 
