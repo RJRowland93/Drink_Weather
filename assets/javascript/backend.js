@@ -117,24 +117,28 @@ $("#submitButton").on("click", function() {
 			$("#drinkTitle").html(drink.strDrink);
 			$(".card-content").html("");
 			//build list of ingredients to be appended to card-content
-			var newUl = $("<tr>");
+			
 			
 			var d = 1;
 			var ingredients = "strIngredient" + d;
 			var measure = "strMeasure" + d;
 			
 			console.log(drink[ingredients]);
-			$(".card-content").append(newUl);
+			
 
 			//POPULATING LOOP LIST GOES HERE
 
 			instructions();
 
 			function instructions(){
+				var table = $("<table>");
+				var ingredientImgRow = $("<tr>");
+				var measureRow = $("<tr>");
 
 				while(drink[ingredients] != ''){
 
-			 	 	newUl.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>" + drink[measure] + " " + drink[ingredients]);
+			 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
+			 	 	measureRow.attr("id", "measure").append("<td>" + drink[measure] + " " + drink[ingredients]);
 			 		d++;
 			 		ingredients = "strIngredient" + d;
 			 		measure = "strMeasure" + d;
@@ -144,8 +148,13 @@ $("#submitButton").on("click", function() {
 			 		 console.log(drink[ingredients]);
 				}
 
-				if(d === 15){
+				if(drink[ingredients] === ''){
+						table.append(ingredientImgRow);
+						table.append(measureRow);
+						$(".card-content").append(table);
 						$(".card-content").append("<p>" + drink.strInstructions);
+
+						
 				}
 
 
