@@ -172,7 +172,93 @@ $("#submitButton").on("click", function() {
 
 })
 
+$("a.carousel-item").on("click", function() {
+	console.log(this.id);
 
+	switch(this.id) {
+		case "winter": {
+			tipsyarray = drinks.winter;
+		}
+		break;
+
+		case "fall": {
+			tipsyarray = drinks.fall;
+		}
+		break;
+
+		case "summer": {
+			tipsyarray = drinks.summer;
+		}
+		break;
+
+		case "spring": {
+			tipsyarray = drinks.spring;
+		}
+		break;
+	}
+	console.log(tipsyarray);
+	chosenDrink = tipsyarray[Math.floor(Math.random() * tipsyarray.length)];
+	console.log(chosenDrink.id);
+
+	$.ajax({
+		url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
+		method: 'GET'
+		
+		})
+		.done(function(drinkResponse) {
+			console.log("success");
+			console.log(drinkResponse.drinks[0]);
+			var drink = drinkResponse.drinks[0];
+
+			$(".card-image img").attr("src", drink.strDrinkThumb);
+			$("#drinkTitle").html(drink.strDrink);
+			$(".card-content").html("");
+			//build list of ingredients to be appended to card-content
+			
+			
+			var d = 1;
+			var ingredients = "strIngredient" + d;
+			var measure = "strMeasure" + d;
+			
+			console.log(drink[ingredients]);
+			
+
+			//POPULATING LOOP LIST GOES HERE
+
+			instructions();
+
+			function instructions(){
+				var table = $("<table>");
+				var ingredientImgRow = $("<tr>");
+				var measureRow = $("<tr>");
+
+				while(drink[ingredients] != ''){
+
+			 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
+			 	 	measureRow.attr("id", "measure").append("<td>" + drink[measure] + " " + drink[ingredients]);
+			 		d++;
+			 		ingredients = "strIngredient" + d;
+			 		measure = "strMeasure" + d;
+
+
+			 		 console.log(d);
+			 		 console.log(drink[ingredients]);
+				}
+
+				if(drink[ingredients] === ''){
+						table.append(ingredientImgRow);
+						table.append(measureRow);
+						$(".card-content").append(table);
+						$(".card-content").append("<p>" + drink.strInstructions);
+
+						
+				}
+
+
+			};
+
+		  });
+})
 
 
 
