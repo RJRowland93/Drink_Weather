@@ -172,7 +172,30 @@ $("#submitButton").on("click", function() {
 
 })
 
+$("a.carousel-item").on("click", function() {
+	console.log(this.id);
+	switch(this.id) {
+		case "winter": {
+			console.log("winter clicked");
+		}
+		break;
 
+		case "fall": {
+			console.log("fall clicked");
+		}
+		break;
+
+		case "summer": {
+			console.log("summer clicked");
+		}
+		break;
+
+		case "spring": {
+			console.log("spring clicked");
+		}
+		break;
+	}
+})
 
 
 
