@@ -50,7 +50,6 @@ function chooseDrink() {
 
 $("#submitButton").on("click", function() {
 
-
 	//Weather API call parameters
 	var weatherAPIKey = "APPID=4888c0dfdc6bd6c82a0adf3d3cef0ba3";
 	var cityParam = "&q=";
@@ -109,6 +108,8 @@ $("#submitButton").on("click", function() {
 		
 		})
 		.done(function(drinkResponse) {
+
+			$("#drinkChoice").removeClass("hide");
 			console.log("success");
 			console.log(drinkResponse.drinks[0]);
 			var drink = drinkResponse.drinks[0];
@@ -126,7 +127,6 @@ $("#submitButton").on("click", function() {
 			console.log(drink[ingredients]);
 			
 
-			//POPULATING LOOP LIST GOES HERE
 
 			instructions();
 
@@ -206,6 +206,7 @@ $("a.carousel-item").on("click", function() {
 		
 		})
 		.done(function(drinkResponse) {
+			$("#drinkChoice").removeClass("hide");
 			console.log("success");
 			console.log(drinkResponse.drinks[0]);
 			var drink = drinkResponse.drinks[0];
