@@ -14,3 +14,6 @@
   	height: 200px !important;
   	perspective: 200px !important;
   }
+  .hide {
+  	display: none;
+  }
