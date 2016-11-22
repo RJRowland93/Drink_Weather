@@ -1,18 +1,21 @@
 /*Stick Footer*/
 /*=====================================*/
-  body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+.site-content {
+  flex: 1;
+}
+  body {
+    background-image: url("../images/weather.png");
+}
   /*=====================================*/
   .carousel {
-  	height: 200px !important;
-  	perspective: 200px !important;
+  	height: 400px !important;
+  	perspective: 400px !important;
   }
   .hide {
   	display: none;

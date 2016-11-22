@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<title>Typsy Weather</title>
@@ -14,83 +14,75 @@
   <link rel="stylesheet" href="assets/css/main.css">
   
 </head>
-<body>
+<body class="site">
 <!-- Header Title -->
-    <nav role="navigation">
-      <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Typsy Weather</a>
-      </div>
-    </nav>
-
-  <div id="index-banner" class="parallax-container">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br>
-<!-- Temperature -->
-        <h1 class="header center teal-text text-lighten-2">Temperature</h1>
-        <br>
-<!-- Drink Carousel -->
-        <div class="row">
-			<div class="col s12 m8 offset-m2">
-			  	<div class="carousel">
-			    <a class="carousel-item" id="winter" href="#one!"><img src="assets/images/cold.jpg"></a>
-			    <a class="carousel-item" id="fall" href="#two!"><img src="assets/images/fall.jpg"></a>
-			    <a class="carousel-item" id="summer" href="#three!"><img src="assets/images/hot.jpg"></a>
-			    <a class="carousel-item" href="#four!"><img src="assets/images/rainy.jpg"></a>
-			    <a class="carousel-item" id="spring" href="#five!"><img src="assets/images/sunny.jpg"></a>
-			  </div>
-			</div>
-		</div>
-<!-- Search Bar -->
-        <div class="row">
-        <form class="col s12 m6 offset-m3">
-        	<div class="input-field">
-        		<div class="row">
-        			<div class="valign-wrapper">
-					  <div class="input-field	col s6 valign">
-        				<input id="city" type="text" class="validate">
-	          			<label for="city">Enter a City</label>
-        			  </div>
-	        			<button class="btn waves-effect waves-light col s6 valign hoverable" type="submit" name="action" id="submitButton">Submit
-					    <i class="material-icons right">send</i>
-					  </button>
-					</div>
-        		</div>
-          </div>
-        </form>
-        </div>
-      </div>
-      </div>
-      <div class="parallax"><img src="assets/images/sunny.jpg" alt="weather background"></div>
+<header>
+  <nav role="navigation" class="cyan">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Typsy Weather</a>
     </div>
+  </nav>
+</header>
+
+
+<main class="site-content">
+<!-- Drink Carousel -->
+<div class="carousel carousel-slider">
+  <div class="carousel-fixed-item center">
+<!-- Search Bar -->
+    <div class="row">
+      <form class="col s12 m6 offset-m3">
+        <div class="input-field">
+          <div class="row">
+            <div class="valign-wrapper">
+              <div class="input-field col s12 m6 valign">
+                <input id="city" type="text" class="validate">
+                <label for="city">Enter a City</label>
+              </div>
+              <button class="btn waves-effect waves-light col s12 m6 valign hoverable cyan" type="submit" name="action" id="submitButton">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <a class="carousel-item" id="winter" href="#one!"><img src="assets/images/winterdrink.jpg"></a>
+  <a class="carousel-item" id="fall" href="#two!"><img src="assets/images/falldrink.jpg"></a>
+  <a class="carousel-item" id="summer" href="#three!"><img src="assets/images/summerdrink.jpg"></a>
+  <a class="carousel-item" id="spring" href="#four!"><img src="assets/images/spring.jpg"></a>
+  </div>
 
 <!-- Drink Choice -->
-    <div class="row center">
-		<div id="drinkChoice" class="hide">
-			<div class="row">
-		        <div class="col s12 m8 offset-m2">
-		          <div class="card">
-		            <div class="card-image">
-		              <img src="assets/images/cold.jpg">
-		              <span class="card-title" id="drinkTitle">Drink Title</span>
-		            </div>
-		            <div class="card-content">
-		              <p id="drinkIngredients">Voda Rum Juice</p>
-		              <br>
-		              <p id="drinkDirections">Pour over ice.</p>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-			</div>
-		</div>
+  <div class="row center">
+    <div id="drinkChoice" class="hide">
+      <div class="row">
+        <div class="col s12 m8 offset-m2">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/images/cold.jpg">
+              <span class="card-title" id="drinkTitle">Drink Title</span>
+            </div>
+            <div class="card-content">
+              <p id="drinkIngredients">Voda Rum Juice</p>
+              <br>
+              <p id="drinkDirections">Pour over ice.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
  
 <!-- footer -->
-	<footer class="page-footer">
+	<footer class="page-footer center cyan">
 		<div class="container">
 			<div class="row">
 				<div class="col s12">
-					<h5 class="white-text">Created by: <a href="https://www.github.com/epanderson92" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</h5> 
+					<h5 class="white-text">Created by: <a href="https://www.github.com/epanderson92" class="" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</h5> 
 				</div>
 			</div>
 		</div>
@@ -104,9 +96,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script src="assets/javascript/backend.js"></script>
   <script>
+  // Initialize Carousel
   	  $(document).ready(function(){
       $('.carousel').carousel();
     });
+  // Initialize Carousel Slider 
+      $('.carousel.carousel-slider').carousel({full_width: true});
+
   	   $(document).ready(function(){
       $('.parallax').parallax();
     });
