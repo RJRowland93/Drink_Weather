@@ -38,11 +38,71 @@ function chooseDrink() {
 	}else{
 		tipsyarray = drinks.winter;
 	};
-	console.log(tipsyarray);
+	
 	chosenDrink = tipsyarray[Math.floor(Math.random() * tipsyarray.length)];
-	console.log("chosen drink: " + chosenDrink.name + chosenDrink.id);
+
+
 
 }
+
+function instructions(drink){
+	var d = 1;
+	var ingredients = "strIngredient" + d;
+	var measure = "strMeasure" + d;
+
+	var table = $("<table>");
+	var ingredientImgRow = $("<tr>");
+	var measureRow = $("<tr>");
+
+	while(drink[ingredients] != ''){
+
+ 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
+ 	 	measureRow.attr("id", "measure").append("<td>" + drink[measure] + " " + drink[ingredients]);
+ 		d++;
+ 		ingredients = "strIngredient" + d;
+ 		measure = "strMeasure" + d;
+
+
+ 		 
+	}
+
+	if(drink[ingredients] === ''){
+			table.append(ingredientImgRow);
+			table.append(measureRow);
+			$("#drinkIngredients").append(table);
+			$("#drinkIngredients").append("<p>" + drink.strInstructions);
+
+						
+	}
+
+
+};
+
+function cocktailDOM(){
+	$.ajax({
+	url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
+	method: 'GET'
+	
+	})
+	.done(function(drinkResponse) {
+
+		$("#drinkChoice").removeClass("hide");
+		
+		var drink = drinkResponse.drinks[0];
+
+		$(".card-image img").attr("src", drink.strDrinkThumb);
+		$("#drinkTitle").html(drink.strDrink);
+		$(".card-content").html("");
+		//build list of ingredients to be appended to card-content
+		
+		
+
+		instructions(drink);
+
+		
+	  })
+}
+
 
 
 
@@ -59,13 +119,12 @@ $("#submitButton").on("click", function() {
 	var weatherQuery = "http://api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
 
 	var userInput = $("#city").val().trim();
-	console.log(userInput);
-	console.log("type of user input: " + typeof userInput);
+	
 	//boolean variable to determine whether to query with city param or zip param
 	var isCity;
 	//parse user input to determine if it's a number or not
 	var parsedInput = parseInt(userInput);
-	console.log(isNaN(parsedInput));
+	
 	//if its not a number, it must be a string aka a city
 	if (isNaN(parsedInput)) {
 
@@ -74,7 +133,7 @@ $("#submitButton").on("click", function() {
 		isCity = false;
 	}
 
-	console.log("isCity: " + isCity);
+	
 	//if its a city, add userinput to city parameter and add city param to query url
 
 	if (isCity) {
@@ -85,84 +144,25 @@ $("#submitButton").on("click", function() {
 		weatherQuery += zipcodeParam;
 	}
 
-	console.log("weather query: " + weatherQuery);
+	
 	//Call weather API and store weather condition and temperature in F for queried location to global variables
 
 	$.ajax({
 		url: weatherQuery,
 		method: "GET"
 	}).done(function(response) {
-		console.log(response);
+		
 		weather = response.weather[0].main;
 		temperatureF = Math.floor(response.main.temp);
-		console.log(weather);
-		console.log(temperatureF);
-
+		
 		chooseDrink();
 
-		/*ajax call for cocktail db, put inside weather ajax call response to make sure it doesn't run
-		until weather call is done*/
-		$.ajax({
-		url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
-		method: 'GET'
+		/*call function for cocktaildb inside weather ajax call .done function*/
+		cocktailDOM();
+
 		
-		})
-		.done(function(drinkResponse) {
 
-			$("#drinkChoice").removeClass("hide");
-			console.log("success");
-			console.log(drinkResponse.drinks[0]);
-			var drink = drinkResponse.drinks[0];
-
-			$(".card-image img").attr("src", drink.strDrinkThumb);
-			$("#drinkTitle").html(drink.strDrink);
-			$(".card-content").html("");
-			//build list of ingredients to be appended to card-content
-			
-			
-			var d = 1;
-			var ingredients = "strIngredient" + d;
-			var measure = "strMeasure" + d;
-			
-			console.log(drink[ingredients]);
-			
-
-
-			instructions();
-
-			function instructions(){
-				var table = $("<table>");
-				var ingredientImgRow = $("<tr>");
-				var measureRow = $("<tr>");
-
-				while(drink[ingredients] != ''){
-
-			 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
-			 	 	measureRow.attr("id", "measure").append("<td>" + drink[measure] + " " + drink[ingredients]);
-			 		d++;
-			 		ingredients = "strIngredient" + d;
-			 		measure = "strMeasure" + d;
-
-
-			 		 console.log(d);
-			 		 console.log(drink[ingredients]);
-				}
-
-				if(drink[ingredients] === ''){
-						table.append(ingredientImgRow);
-						table.append(measureRow);
-						$(".card-content").append(table);
-						$(".card-content").append("<p>" + drink.strInstructions);
-
-						
-				}
-
-
-			};
-
-		  });
-
-	})
+	});
 
 
 	//clear input field
@@ -173,94 +173,38 @@ $("#submitButton").on("click", function() {
 })
 
 $("a.carousel-item").on("click", function() {
-	console.log(this.id);
-
+	
 	switch(this.id) {
 		case "winter": {
-			tipsyarray = drinks.winter;
+			temperatureF = 45;
+			chooseDrink();
+			cocktailDOM();
+			
 		}
 		break;
 
 		case "fall": {
-			tipsyarray = drinks.fall;
+			temperatureF = 75;
+			chooseDrink();
+			cocktailDOM();
 		}
 		break;
 
 		case "summer": {
-			tipsyarray = drinks.summer;
+			temperatureF = 85;
+			chooseDrink();
+			cocktailDOM();
 		}
 		break;
 
 		case "spring": {
-			tipsyarray = drinks.spring;
+			temperatureF = 65;
+			chooseDrink();
+			cocktailDOM();
 		}
 		break;
 	}
-	console.log(tipsyarray);
-	chosenDrink = tipsyarray[Math.floor(Math.random() * tipsyarray.length)];
-	console.log(chosenDrink.id);
-
-	$.ajax({
-		url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
-		method: 'GET'
-		
-		})
-		.done(function(drinkResponse) {
-			$("#drinkChoice").removeClass("hide");
-			console.log("success");
-			console.log(drinkResponse.drinks[0]);
-			var drink = drinkResponse.drinks[0];
-
-			$(".card-image img").attr("src", drink.strDrinkThumb);
-			$("#drinkTitle").html(drink.strDrink);
-			$(".card-content").html("");
-			//build list of ingredients to be appended to card-content
-			
-			
-			var d = 1;
-			var ingredients = "strIngredient" + d;
-			var measure = "strMeasure" + d;
-			
-			console.log(drink[ingredients]);
-			
-
-			//POPULATING LOOP LIST GOES HERE
-
-			instructions();
-
-			function instructions(){
-				var table = $("<table>");
-				var ingredientImgRow = $("<tr>");
-				var measureRow = $("<tr>");
-
-				while(drink[ingredients] != ''){
-
-			 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img class='responsive-img' src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
-			 	 	measureRow.attr("id", "measure").append("<td>" + drink[measure] + " " + drink[ingredients]);
-			 		d++;
-			 		ingredients = "strIngredient" + d;
-			 		measure = "strMeasure" + d;
-
-
-			 		 console.log(d);
-			 		 console.log(drink[ingredients]);
-				}
-
-				if(drink[ingredients] === ''){
-						table.append(ingredientImgRow);
-						table.append(measureRow);
-						$(".card-content").append(table);
-						$(".card-content").append("<p>" + drink.strInstructions);
-
-						
-				}
-
-
-			};
-
-		  });
-})
-
+});
 
 
 
