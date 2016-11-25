@@ -235,7 +235,7 @@ $("a.carousel-item").on("click", function() {
 
 				while(drink[ingredients] != ''){
 
-			 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
+			 	 	ingredientImgRow.attr("id", "ingredientsList").append("<td>" + "<img class='responsive-img' src='http://www.thecocktaildb.com/images/ingredients/" + drink[ingredients] + "-Small.png'>");
 			 	 	measureRow.attr("id", "measure").append("<td>" + drink[measure] + " " + drink[ingredients]);
 			 		d++;
 			 		ingredients = "strIngredient" + d;
