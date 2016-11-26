@@ -92,7 +92,8 @@ function cocktailDOM(){
 
 		$(".card-image img").attr("src", drink.strDrinkThumb);
 		$("#drinkTitle").html(drink.strDrink);
-		$(".card-content").html("");
+
+		
 		//build list of ingredients to be appended to card-content
 		
 		
@@ -151,9 +152,19 @@ $("#submitButton").on("click", function() {
 		url: weatherQuery,
 		method: "GET"
 	}).done(function(response) {
+		$()
 		
 		weather = response.weather[0].main;
 		temperatureF = Math.floor(response.main.temp);
+		$("#drinkIngredients").empty();
+		$("#degrees").html(temperatureF);
+		$("#overhead").html(" " + response.clouds.all);
+		console.log(response.clouds.all);
+		$("#humidity").html(" " + response.main.humidity);
+		$("#wind").html(" " + response.wind.speed);
+
+
+
 		
 		chooseDrink();
 
