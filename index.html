@@ -27,7 +27,7 @@
 
 <main class="site-content">
   <!-- Drink Carousel -->
-  <div class="carousel carousel-slider">
+  <div class="carousel carousel-slider" data-indicators="true">
     <div class="carousel-fixed-item center">
       <h1 class="white-text">Have a drink based on the weather!</h1>
     </div>
@@ -93,13 +93,84 @@
   </div>
 </main>
 
- 
+
+
 <!-- footer -->
 	<footer class="page-footer center cyan">
 		<div class="container">
 			<div class="row">
 				<div class="col s12">
-					<small class="white-text">Created by: <a href="https://www.github.com/epanderson92" class="" target="_blank">Evan</a>, <a href="https://www.github.com/dudenamedjune" target="_blank">June</a>, <a href="https://www.github.com/michaeledwards91" target="_blank">Michael</a> and <a href="https://www.github.com/RJRowland93" target="_blank">Randal</a> 2016</small> 
+					<small class="white-text">Created by:
+           <ul id="slide-out" class="side-nav">
+            <li>
+            <div class="userView">
+              <div class="background">
+                <img src="assets/images/ut.jpg">
+              </div>
+              <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+              <a href="#!name"><span class="white-text name">John Doe</span></a>
+              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+            </li>
+            <li><a href="https://www.github.com/dudenamedjune" class="waves-effect" target="_blank">Github <img src="assets/images/git.png"></a></li>
+            <li><a href="#!" class="waves-effect" target="_blank">Linkedin <img src="assets/images/linkedin.png"></a></li>
+            <li><a class="waves-effect" href="#!" target="_blank">Twitter <img class="logo" src="assets/images/twitter.png"></a></li>
+          </ul>
+          <a href="#" data-activates="slide-out" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Evan's Social Networks.">Evan</a>,
+
+
+           <ul id="slide-outj" class="side-nav">
+            <li>
+            <div class="userView">
+              <div class="background">
+                <img src="assets/images/ut.jpg">
+              </div>
+              <a href="#!user"><img class="circle" src="assets/images/june.jpg"></a>
+              <a href="#!name"><span class="white-text name">June Kaleb Lara</span></a>
+              <a href="#!email"><span class="white-text email">june.k.lara@gmail.com</span></a>
+            </div>
+            </li>
+            <li><a href="https://www.github.com/dudenamedjune" class="waves-effect" target="_blank">Github <img src="assets/images/git.png"></a></li>
+            <li><a href="#!" class="waves-effect" href="https://www.linkedin.com/in/june-lara-51b10183" target="_blank">Linkedin <img src="assets/images/linkedin.png"></a></li>
+            <li><a class="waves-effect" href="https://twitter.com/dudenamedJune" target="_blank">Twitter <img class="logo" src="assets/images/twitter.png"></a></li>
+          </ul>
+          <a href="#" data-activates="slide-outj" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="June's Social Networks.">June</a>,
+
+           <ul id="slide-outm" class="side-nav">
+            <li>
+            <div class="userView">
+              <div class="background">
+                <img src="assets/images/ut.jpg">
+              </div>
+              <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+              <a href="#!name"><span class="white-text name">John Doe</span></a>
+              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+            </li>
+            <li><a href="https://www.github.com/dudenamedjune" class="waves-effect" target="_blank">Github <img src="assets/images/git.png"></a></li>
+            <li><a href="#!" class="waves-effect" target="_blank">Linkedin <img src="assets/images/linkedin.png"></a></li>
+            <li><a class="waves-effect" href="#" target="_blank">Twitter <img class="logo" src="assets/images/twitter.png"></a></li>
+          </ul>
+          <a href="#" data-activates="slide-outm" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Michael's Social Networks.">Michael</a>
+
+           and            
+
+           <ul id="slide-outr" class="side-nav">
+            <li>
+            <div class="userView">
+              <div class="background">
+                <img src="assets/images/ut.jpg">
+              </div>
+              <a href="#!user"><img class="circle" src="assets/images/yuna.jpg"></a>
+              <a href="#!name"><span class="white-text name">John Doe</span></a>
+              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+            </li>
+            <li><a href="https://www.github.com/dudenamedjune" class="waves-effect" target="_blank">Github <img src="assets/images/git.png"></a></li>
+            <li><a href="#!" class="waves-effect" target="_blank">Linkedin <img src="assets/images/linkedin.png"></a></li>
+            <li><a class="waves-effect" href="#!" target="_blank">Twitter <img class="logo" src="assets/images/twitter.png"></a></li>
+          </ul>
+          <a href="#" data-activates="slide-outr" class="button-collapse tooltipped" data-position="top" data-delay="50" data-tooltip="Randal's Social Networks.">Randal</a> 2016</small> 
 				</div>
 			</div>
 		</div>
@@ -123,6 +194,7 @@
   	   $(document).ready(function(){
       $('.parallax').parallax();
     });
+        $(".button-collapse").sideNav();
   </script>
 
 </body>

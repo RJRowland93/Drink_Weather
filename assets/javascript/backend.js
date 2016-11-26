@@ -43,8 +43,9 @@ function chooseDrink() {
 
 
 
-}
+};
 
+//
 function instructions(drink){
 	var d = 1;
 	var ingredients = "strIngredient" + d;
@@ -103,10 +104,12 @@ function cocktailDOM(){
 
 		
 	  })
-}
+};
 
 
-
+$(document).ajaxError(function(){
+			
+})
 
 
 
@@ -152,6 +155,8 @@ $("#submitButton").on("click", function() {
 	$.ajax({
 		url: weatherQuery,
 		method: "GET"
+
+
 	}).done(function(response) {
 		
 		
@@ -160,7 +165,7 @@ $("#submitButton").on("click", function() {
 		
 		$("#degrees").html(temperatureF);
 		$("#overhead").html(" " + response.clouds.all);
-		console.log(response.clouds.all);
+		
 		$("#humidity").html(" " + response.main.humidity);
 		$("#wind").html(" " + response.wind.speed);
 
@@ -218,6 +223,7 @@ $("a.carousel-item").on("click", function() {
 	}
 });
 
+ $(".button-collapse").sideNav();
 
 
 		  
