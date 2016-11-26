@@ -108,6 +108,7 @@ function cocktailDOM(){
 
 
 $(document).ajaxError(function(){
+	$("#error").html("Please enter valid city or zip.");
 			
 })
 
@@ -158,6 +159,7 @@ $("#submitButton").on("click", function() {
 
 
 	}).done(function(response) {
+		$("#error").html("Enter another city.");
 		
 		
 		weather = response.weather[0].main;
