@@ -87,6 +87,7 @@ function cocktailDOM(){
 	.done(function(drinkResponse) {
 
 		$("#drinkChoice").removeClass("hide");
+		$("#drinkIngredients").empty();
 		
 		var drink = drinkResponse.drinks[0];
 
@@ -152,11 +153,11 @@ $("#submitButton").on("click", function() {
 		url: weatherQuery,
 		method: "GET"
 	}).done(function(response) {
-		$()
+		
 		
 		weather = response.weather[0].main;
 		temperatureF = Math.floor(response.main.temp);
-		$("#drinkIngredients").empty();
+		
 		$("#degrees").html(temperatureF);
 		$("#overhead").html(" " + response.clouds.all);
 		console.log(response.clouds.all);
