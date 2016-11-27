@@ -81,7 +81,7 @@ function instructions(drink){
 
 function cocktailDOM(){
 	$.ajax({
-	url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
+	url: 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + chosenDrink.id,
 	method: 'GET'
 	
 	})
@@ -125,7 +125,7 @@ $("#submitButton").on("click", function() {
 	var zipcodeParam = "&zip=";
 	var unitsParam = "&units=imperial";
 	//Query URL
-	var weatherQuery = "http://api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
+	var weatherQuery = "https://api.openweathermap.org/data/2.5/weather?"+weatherAPIKey+unitsParam;
 
 	var userInput = $("#city").val().trim();
 	
