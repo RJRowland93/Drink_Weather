@@ -225,7 +225,6 @@ $("a.carousel-item").on("click", function() {
 	}
 });
 
- $(".button-collapse").sideNav();
 
 
 		  
