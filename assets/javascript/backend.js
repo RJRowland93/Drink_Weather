@@ -1,7 +1,7 @@
 //Global Variables
 var weather = ""; //weather condition of queried city/zip
 var temperatureF; //temperature in fahrenheit, will hold temp of queried city/zip
-var chosenDrink; //will hold object that contains the ID used to query cocktailDB
+var chosenDrink = {}; //will hold object that contains the ID used to query cocktailDB
 var tipsyarray; //
 
 // globaloboject for drinks
@@ -99,11 +99,13 @@ function cocktailDOM(){
 		
 		//build list of ingredients to be appended to card-content
 		
-		
-
 		instructions(drink);
 
-		
+		//add most recent drink to local storage
+		localStorage.recentDrinkName = drink.strDrink;
+		localStorage.recentDrinkId = drink.idDrink;
+		$("#recentDrinks").html("");
+		createRecentDrinkButton();
 	  })
 };
 
@@ -226,7 +228,33 @@ $("a.carousel-item").on("click", function() {
 		break;
 	}
 });
+function checkStorage() {
 
+	if (localStorage.recentDrinkName !== undefined) {
+		createRecentDrinkButton();
+	}
+}
 
+checkStorage();
 
-		  
+$(document).on("click", "#recentDrinkButton", function() {
+	console.log($(this).data("drinkid"));
+	chosenDrink.id = $(this).data("drinkid");
+	console.log(chosenDrink.id);
+	cocktailDOM();
+	$("#weatherInfo").addClass("hide");
+})		  
+
+function createRecentDrinkButton() {
+	//build button to append to #recentDrinks1
+	var newBtn = $("<button>");
+	newBtn.attr("id", "recentDrinkButton");
+	// newBtn.data("data-drinkid", localStorage.recentDrinkId);
+	newBtn.attr("data-drinkid", localStorage.recentDrinkId);
+	newBtn.html(localStorage.recentDrinkName);
+	newBtn.addClass("btn hoverable waves-effect waves-light");
+
+	$("#recentReccomendations").removeClass("hide");
+	
+	$("#recentDrinks").append(newBtn);
+}
