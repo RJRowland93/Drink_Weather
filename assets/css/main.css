@@ -18,7 +18,7 @@
   	perspective: 400px !important;
   }
   .hide {
-  	display: none;
+  	visibility: hidden;
   }
 div .background img{
   width: 100%;
@@ -28,4 +28,7 @@ div .background img{
 }
 a {
   color: #546e7a;
+}
+.shadow {
+  text-shadow: 2px 1px #000;
 }
