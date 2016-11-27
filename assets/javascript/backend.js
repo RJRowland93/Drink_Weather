@@ -165,6 +165,7 @@ $("#submitButton").on("click", function() {
 		weather = response.weather[0].main;
 		temperatureF = Math.floor(response.main.temp);
 		
+		$("#location").html(response.name);
 		$("#degrees").html(temperatureF);
 		$("#overhead").html(" " + response.clouds.all);
 		
