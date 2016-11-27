@@ -86,7 +86,7 @@ function cocktailDOM(){
 	
 	})
 	.done(function(drinkResponse) {
-
+		$("#weatherInfo").removeClass("hide");
 		$("#drinkChoice").removeClass("hide");
 		$("#drinkIngredients").empty();
 		
