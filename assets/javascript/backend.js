@@ -45,7 +45,7 @@ function chooseDrink() {
 
 };
 
-//
+
 function instructions(drink){
 	var d = 1;
 	var ingredients = "strIngredient" + d;
