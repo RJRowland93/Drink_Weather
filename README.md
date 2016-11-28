@@ -13,4 +13,4 @@ The backend makes use of the Open Weather Map API and the Cocktail DB API. When 
 <p>Screenshot 3</p>
 ![screenshot](assets/images/screen3.jpg?raw=true)
 <p>Screenshot 4</p>
-![screenshot](assets/images/screen1.jpg?raw=true)
+![screenshot](assets/images/screen4.jpg?raw=true)
